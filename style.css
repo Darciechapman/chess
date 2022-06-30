@@ -9,6 +9,15 @@ body {
     padding: 0;
 }
 
+@keyframes fadeIn {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease
+}
+
 .chess-table {
     height: 400px;
     width: 400px;
@@ -67,6 +76,10 @@ body {
 .piece-box.piece-potential {
     background: lightskyblue;
     border: 0.1px solid rgb(24, 155, 236);
+}
+
+.piece-box.piece-not-allowed {
+    cursor: coral;
 }
 
 .piece-box.piece-pointer {
