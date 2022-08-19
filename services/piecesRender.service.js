@@ -1,5 +1,4 @@
-import { piecesImages } from "../config/piecesImages.config";
-import { intialGame } from '..config/initialGame.config.js'
+import { piecesImages } from "../config/piecesImages.config"
 import { chessConfig } from '../config/chessConfig.config'
 import { $, $$, $$$ } from '../utils.js'
 
