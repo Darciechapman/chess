@@ -35,3 +35,5 @@ export const piecesRender = {
         }
     }
 }
+
+window.piecesRender = piecesRender
