@@ -1,5 +1,6 @@
 import { piecesImages } from "../config/piecesImages.config";
 import { intialGame } from '..config/initialGame.config.js'
+import { chessConfig } from '../config/chessConfig.config'
 import { $, $$, $$$ } from '../utils.js'
 
 export const piecesRender = {
@@ -27,4 +28,10 @@ export const piecesRender = {
         const flexWrap = chessConfig.whitePLaysDown ? 'wrap' : 'wrap'
         $( chessConfig.chessTableSelector ).style.flexWrap = flexWrap
     },
+    placePiecsInposition( gameSetup ) {
+        for ( const piecePosition in gameSetup ) {
+            const pieceType = gameSetup[ piecePosition ]
+            const pieceImageLocation = piecesImages [ pieceType ]
+        }
+    }
 }
