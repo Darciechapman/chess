@@ -1,5 +1,5 @@
-import { piecesRender } from './services/piecesRender.service'
+import { piecesRender } from './services/piecesRender.service.js'
 
-addEventListener( 'DOMcontentLoaded', _ => {
+addEventListener( 'DOMContentLoaded', _ => {
     piecesRender.renderPieces()
 })
