@@ -1,7 +1,7 @@
 import { piecesImages } from "../config/piecesImages.config"
 import { initialGame } from '../config/initialGame.config.js'
 import { potentialGame } from '../config/potentialGame.config.js'
-import { chessConfig } from '../config/chessConfig.config'
+import { chessConfig } from '../config/chessConfig.config.js'
 import { $, $$, $$$ } from '../utils.js'
 
 export const piecesRender = {
@@ -16,36 +16,36 @@ export const piecesRender = {
         this.addPiecesBoxListeners()
         this.piecesDetermine()
     },
-    placePieceBoxNumber() {
+    placePieceBoxNumbers() {
         $$( chessConfig.chessPieceBoxSelector ).map( pieceBoxElement => {
             const spanElement = document.createElement( 'span' )
             spanElement.classList.add( 'piece-box-text' )
-            spanElement.innerHtml = pieceBoxElement.gatAttribute( 'id' )
-
+            spanElement.innerHTML = pieceBoxElement.getAttribute( 'id' )
+            
             pieceBoxElement.append( spanElement )
         })
     },
     placeWhiteDownOrUp() {
-        const flexWrap = chessConfig.whitePLaysDown ? 'wrap' : 'wrap-reverse'
+        const flexWrap = chessConfig.whitePlaysDown ? 'wrap' : 'wrap-reverse'
         $( chessConfig.chessTableSelector ).style.flexWrap = flexWrap
     },
     placePiecesInPosition( gameSetup ) {
         for ( const piecePosition in gameSetup ) {
             const pieceType = gameSetup[ piecePosition ]
-            const pieceImageLocation = piecesImages [ pieceType ]
+            const pieceImageLocation = piecesImages[ pieceType ]
 
             const imgElement = document.createElement( 'img' )
             imgElement.classList.add( 'piece' )
             imgElement.setAttribute( 'piece-type', pieceType )
-            imgElement.src = `${ pieceImageLocation }` 
+            imgElement.src = `${ pieceImageLocation }`
 
             $( `#${ piecePosition }` ).append( imgElement )
         }
     },
     addPiecesBoxListeners() {
         $$( chessConfig.chessPieceBoxSelector ).forEach( pieceBoxElement => {
-            const pieceBoxPosition = pieceBoxElement.getAttribute( 'id ')
-            const pieceElement = $$$( pieceBoxElement, chessConfig.chessPieceBoxSelector )
+            const pieceBoxPosition = pieceBoxElement.getAttribute( 'id' )
+            const pieceElement = $$$( pieceBoxElement, chessConfig.chessPieceSelector )
             const pieceType = pieceElement?.getAttribute( 'piece-type' ) ?? null
 
             const handleParams = {
@@ -57,33 +57,35 @@ export const piecesRender = {
 
             this.piecesEventListeners[ pieceBoxPosition ] = {
                 'mouseenter': _ => {
-                    piecesHandle.handlePiecesMouseenter( handleParams )
+                    piecesHandle.handlePieceMouseenter( handleParams )
                 },
-                'mouseLeave': _ => {
-                    piecesHandle.handlePiecesMouseleave( handleParams )
+                'mouseleave': _ => {
+                    piecesHandle.handlePieceMouseleave( handleParams )
                 },
-                'click' : _ => {
-                    piecesHandle.handlePiecesClick( handleParams )
-                }
+                'click': _ => {
+                    piecesHandle.handlePieceClick( handleParams )
+                },
             }
 
             pieceBoxElement.addEventListener( 'mouseenter', this.piecesEventListeners[ pieceBoxPosition ][ 'mouseenter' ])
-            pieceBoxElement.addEventListener( 'mouseleave', this.piecesEventListeners[ pieceBoxPosition][ 'mouseleave' ])
+            pieceBoxElement.addEventListener( 'mouseleave', this.piecesEventListeners[ pieceBoxPosition ][ 'mouseleave' ])
             pieceBoxElement.addEventListener( 'click', this.piecesEventListeners[ pieceBoxPosition ][ 'click' ])
         })
     },
-    restPiecesBoxListeners() {
+    resetPiecesBoxListeners() {
         $$( chessConfig.chessPieceBoxSelector ).forEach( pieceBoxElement => {
             const pieceBoxPosition = pieceBoxElement.getAttribute( 'id' )
-            
+
             pieceBoxElement.removeEventListener( 'mouseenter', this.piecesEventListeners[ pieceBoxPosition ][ 'mouseenter' ])
             pieceBoxElement.removeEventListener( 'mouseleave', this.piecesEventListeners[ pieceBoxPosition ][ 'mouseleave' ])
             pieceBoxElement.removeEventListener( 'click', this.piecesEventListeners[ pieceBoxPosition ][ 'click' ])
         })
     },
     piecesDetermine() {
-        this.piecesDetermine.generateDetermination()
+        piecesDetermine.generateDeterminations()
     },
+
+    /////////////////////
 
     getCurrentGameSetup() {
         return $$( chessConfig.chessPieceSelector ).
