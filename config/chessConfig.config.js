@@ -1,12 +1,11 @@
 export const chessConfig = {
-    chessTableSelector: 'chess-table',
+    chessTableSelector: '.chess-table',
     chessPieceBoxSelector: '.piece-box',
     chessPieceSelector: '.piece',
     blackWinsSelector: '.chess-message .black-wins',
-    whiteWinSelector: '.chess-message .white-wins',
+    whiteWinsSelector: '.chess-message .white-wins',
     whitePlaysDown: false,
     useInitialGame: false
 }
 
 window.chessConfig = chessConfig
-//window. 
