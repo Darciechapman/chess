@@ -3,7 +3,7 @@ import { initialGame } from '../config/initialGame.config.js'
 import { potentialGame } from '../config/potentialGame.config.js'
 import { chessConfig } from '../config/chessConfig.config.js'
 import { piecesHandle } from '../services/piecesHandle.service.js'
-import { piecesDetermine } from '../services/piecesDetermine.service.js'
+//import { piecesDetermine } from '../services/piecesDetermine.service.js'
 import { $, $$, $$$ } from '../utils/utils.js'
 
 export const piecesRender = {
