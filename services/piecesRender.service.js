@@ -1,8 +1,10 @@
-import { piecesImages } from "../config/piecesImages.config"
+import { piecesImages } from '../config/piecesImages.config.js'
 import { initialGame } from '../config/initialGame.config.js'
 import { potentialGame } from '../config/potentialGame.config.js'
 import { chessConfig } from '../config/chessConfig.config.js'
-import { $, $$, $$$ } from '../utils.js'
+import { piecesHandle } from '../services/piecesHandle.service.js'
+import { piecesDetermine } from '../services/piecesDetermine.service.js'
+import { $, $$, $$$ } from '../utils/utils.js'
 
 export const piecesRender = {
     piecesEventListeners: {},
